@@ -38,13 +38,11 @@ jobs:
         dotnet-version: 5.0.x
     - name: Build and Pack NuGet package
       run: dotnet pack HidSharp/HidSharp.NETStandard.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
-    - name: Test
-      run: tree
     - name: Upload NuGet package to GitHub
       uses: actions/upload-artifact@v2
       with:
         name: nugetPackage
-        path: HidSharp/HidSharp/bin/
+        path: bin/
         
   release:
     runs-on: ubuntu-latest    
