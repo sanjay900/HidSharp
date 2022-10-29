@@ -124,6 +124,13 @@ namespace HidSharp.Platform.Linux
             return native_udev_enumerate_add_match_subsystem(enumerate, subsystem);
         }
 
+        [DllImport(libudev, EntryPoint = "udev_enumerate_add_match_parent")]
+        static extern int native_udev_enumerate_add_match_parent(IntPtr enumerate, IntPtr parent);
+        public override int udev_enumerate_add_match_parent(IntPtr enumerate, IntPtr parent)
+        {
+            return native_udev_enumerate_add_match_parent(enumerate, parent);
+        }
+
         [DllImport(libudev, EntryPoint = "udev_enumerate_scan_devices")]
         static extern int native_udev_enumerate_scan_devices(IntPtr enumerate);
         public override int udev_enumerate_scan_devices(IntPtr enumerate)

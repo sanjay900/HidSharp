@@ -53,39 +53,40 @@ namespace HidSharp.Platform.Linux
         }
 
         public abstract IntPtr udev_new();
-        
+
         public abstract IntPtr udev_ref(IntPtr udev);
-        
+
         public abstract void udev_unref(IntPtr udev);
-        
+
         public abstract IntPtr udev_monitor_new_from_netlink(IntPtr udev, string name);
-        
+
         public abstract void udev_monitor_unref(IntPtr monitor);
-        
+
         public abstract int udev_monitor_filter_add_match_subsystem_devtype(IntPtr monitor, string subsystem, string devtype);
-        
+
         public abstract int udev_monitor_enable_receiving(IntPtr monitor);
-        
+
         public abstract int udev_monitor_get_fd(IntPtr monitor);
-        
+
         public abstract IntPtr udev_monitor_receive_device(IntPtr monitor);
-        
+
         public abstract IntPtr udev_enumerate_new(IntPtr udev);
-        
+
         public abstract IntPtr udev_enumerate_ref(IntPtr enumerate);
-        
+
         public abstract void udev_enumerate_unref(IntPtr enumerate);
-        
+
         public abstract int udev_enumerate_add_match_subsystem(IntPtr enumerate, string subsystem);
-        
+        public abstract int udev_enumerate_add_match_parent(IntPtr enumerate, IntPtr parent);
+
         public abstract int udev_enumerate_scan_devices(IntPtr enumerate);
-        
+
         public abstract IntPtr udev_enumerate_get_list_entry(IntPtr enumerate);
-        
+
         public abstract IntPtr udev_list_entry_get_next(IntPtr entry);
 
         public abstract string udev_list_entry_get_name(IntPtr entry);
-        
+
         public abstract IntPtr udev_device_new_from_syspath(IntPtr udev, string syspath);
 
         public abstract IntPtr udev_device_ref(IntPtr device);
