@@ -8,6 +8,7 @@
     <RootNamespace>HidSharp</RootNamespace>
     <OutputPath>..\bin</OutputPath>
     <DocumentationFile>..\bin\netstandard2.0\HidSharp.XML</DocumentationFile>
+    <RepositoryUrl>https://github.com/sanjay900/HidSharp</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
