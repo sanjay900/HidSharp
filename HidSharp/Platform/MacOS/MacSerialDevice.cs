@@ -59,5 +59,10 @@ namespace HidSharp.Platform.MacOS
         {
             get { return _path.ToString(); }
         }
+
+        public override string RawPath
+        {
+            get { return DevicePath; }
+        }
     }
 }

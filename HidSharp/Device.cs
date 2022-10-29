@@ -143,5 +143,16 @@ namespace HidSharp
         {
             get;
         }
+
+        /// <summary>
+        /// The operating system's name for the device.
+        /// 
+        /// If you have multiple devices with the same Vendor ID, Product ID, Serial Number, etc.,
+        /// this may be useful for differentiating them.
+        /// </summary>
+        public abstract string RawPath
+        {
+            get;
+        }
     }
 }

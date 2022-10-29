@@ -47,5 +47,10 @@ namespace HidSharp.Platform.Linux
         {
             get { return _portName; }
         }
+
+        public override string RawPath
+        {
+            get { return DevicePath; }
+        }
     }
 }

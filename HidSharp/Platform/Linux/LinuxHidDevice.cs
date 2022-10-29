@@ -258,6 +258,11 @@ namespace HidSharp.Platform.Linux
             get { return _path; }
         }
 
+        public override string RawPath
+        {
+            get { return _hidRawPath; }
+        }
+
         public override int VendorID
         {
             get { return _vid; }

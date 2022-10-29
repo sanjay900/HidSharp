@@ -49,5 +49,10 @@ namespace HidSharp.Platform.Windows
         {
             get { return _path; }
         }
+
+        public override string RawPath
+        {
+            get { return DevicePath; }
+        }
     }
 }
