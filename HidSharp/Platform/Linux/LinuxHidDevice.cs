@@ -28,6 +28,7 @@ namespace HidSharp.Platform.Linux
         string _manufacturer;
         string _productName;
         string _serialNumber;
+        string _devpath;
         byte[] _reportDescriptor;
         int _vid, _pid, _version;
         int _maxInput, _maxOutput, _maxFeature;
@@ -110,6 +111,7 @@ namespace HidSharp.Platform.Linux
                                         string idVendor = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "idVendor");
                                         string idProduct = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "idProduct");
                                         string bcdDevice = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "bcdDevice");
+                                        string devpath = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "devpath");
                                         int vid, pid, version;
                                         if (NativeMethods.TryParseHex(idVendor, out vid) &&
                                             NativeMethods.TryParseHex(idProduct, out pid) &&
@@ -121,6 +123,7 @@ namespace HidSharp.Platform.Linux
                                             d._manufacturer = manufacturer;
                                             d._productName = productName;
                                             d._serialNumber = serialNumber;
+                                            d._devpath = devpath;
                                             return d;
                                         }
                                     }
@@ -260,7 +263,7 @@ namespace HidSharp.Platform.Linux
 
         public override string RawPath
         {
-            get { return _hidRawPath; }
+            get { return _devpath; }
         }
 
         public override int VendorID
