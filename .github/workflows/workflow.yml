@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: nugetPackage
-        path: /home/sanjay/Code/HidSharp/bin/
+        path: HidSharp/bin/
         
   release:
     runs-on: ubuntu-latest    
