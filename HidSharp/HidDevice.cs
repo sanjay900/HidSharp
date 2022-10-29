@@ -199,6 +199,14 @@ namespace HidSharp
             get;
         }
 
+        /// <summary>
+        /// The Location, used on macs as a unique identifier
+        /// </summary>
+        public abstract int Location
+        {
+            get;
+        }
+
         /// <exclude />
         [Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
         public virtual string Manufacturer

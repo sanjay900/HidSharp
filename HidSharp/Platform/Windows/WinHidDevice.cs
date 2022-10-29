@@ -21,7 +21,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-
 namespace HidSharp.Platform.Windows
 {
     sealed partial class WinHidDevice : HidDevice
@@ -389,6 +388,10 @@ namespace HidSharp.Platform.Windows
         public override int ReleaseNumberBcd
         {
             get { return _version; }
+        }
+        public override int Location
+        {
+            get { return 0; }
         }
     }
 }

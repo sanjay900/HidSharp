@@ -24,7 +24,7 @@ namespace HidSharp.Platform.MacOS
         string _manufacturer;
         string _productName;
         string _serialNumber;
-        int _vid, _pid, _version;
+        int _vid, _pid, _version, _location;
         int _maxInput, _maxOutput, _maxFeature;
         bool _reportsUseID;
         byte[] _reportDescriptor;
@@ -46,14 +46,16 @@ namespace HidSharp.Platform.MacOS
             {
                 int? vid = NativeMethods.IORegistryEntryGetCFProperty_Int(service, NativeMethods.kIOHIDVendorIDKey);
                 int? pid = NativeMethods.IORegistryEntryGetCFProperty_Int(service, NativeMethods.kIOHIDProductIDKey);
+                int? location = NativeMethods.IORegistryEntryGetCFProperty_Int(service, NativeMethods.kIOHIDLocationIDKey);
                 int? version = NativeMethods.IORegistryEntryGetCFProperty_Int(service, NativeMethods.kIOHIDVersionNumberKey);
-                if (vid == null || pid == null || version == null) { return null; }
+                if (vid == null || pid == null || version == null || location == null) { return null; }
 
                 // TODO: Craft the report descriptor from IOHIDElements so we can support it below OS X 10.8...
                 //       Also, our report sizes aren't correct for the no-report-ID case without this...
 
                 d._vid = (int)vid;
                 d._pid = (int)pid;
+                d._location = (int)location;
                 d._version = (int)version;
                 d._maxInput = NativeMethods.IORegistryEntryGetCFProperty_Int(service, NativeMethods.kIOHIDMaxInputReportSizeKey) ?? 0;
                 d._maxOutput = NativeMethods.IORegistryEntryGetCFProperty_Int(service, NativeMethods.kIOHIDMaxOutputReportSizeKey) ?? 0;
@@ -200,6 +202,10 @@ namespace HidSharp.Platform.MacOS
         internal bool ReportsUseID
         {
             get { return _reportsUseID; }
+        }
+        public override int Location
+        {
+            get { return _location; }
         }
     }
 }
