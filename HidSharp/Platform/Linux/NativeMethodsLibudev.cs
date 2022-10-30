@@ -94,6 +94,7 @@ namespace HidSharp.Platform.Linux
         public abstract void udev_device_unref(IntPtr device);
 
         public abstract string udev_device_get_devnode(IntPtr device);
+        public abstract string udev_device_get_syspath(IntPtr device);
 
         public abstract IntPtr udev_device_get_parent_with_subsystem_devtype(IntPtr device, string subsystem, string devtype);
 

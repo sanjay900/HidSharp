@@ -111,7 +111,7 @@ namespace HidSharp.Platform.Linux
                                         string idVendor = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "idVendor");
                                         string idProduct = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "idProduct");
                                         string bcdDevice = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "bcdDevice");
-                                        string devpath = NativeMethodsLibudev.Instance.udev_device_get_sysattr_value(parent, "devpath");
+                                        string devpath = NativeMethodsLibudev.Instance.udev_device_get_syspath(device);
                                         int vid, pid, version;
                                         if (NativeMethods.TryParseHex(idVendor, out vid) &&
                                             NativeMethods.TryParseHex(idProduct, out pid) &&
